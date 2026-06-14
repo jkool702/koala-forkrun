@@ -8,10 +8,10 @@ OUTPUT_PATH="$1"
 shift
 pushd "$REPO_TOP"/infrastructure
 
-sudo apt-get update && apt-get install -y \
+sudo dnf install --skip-unavailable -y \
     git \
-    python3 python3-pip python3-venv \
-    build-essential libtool m4 automake cloc
+    python3 python3-pip python3-devel \
+    gcc libtool m4 automake cloc
 python3 -m venv venv && . venv/bin/activate && pip install -r requirements.txt
 
 

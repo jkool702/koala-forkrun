@@ -2,7 +2,7 @@ FROM hs-riker
 
 WORKDIR /
 
-RUN apt-get update && apt-get install -y git make gcc autoconf libtool g++
+RUN dnf install -y --skip-unavailable git make gcc autoconf libtool g++
 
 RUN git clone https://github.com/protocolbuffers/protobuf.git
 WORKDIR /protobuf

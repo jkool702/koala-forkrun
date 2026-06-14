@@ -2,7 +2,7 @@ FROM hs-riker
 
 RUN echo "Europe/London" > /etc/timezone \
     dpkg-reconfigure -f noninteractive tzdata \
-    apt-get update && apt-get install -y git \
+    dnf install -y --skip-unavailable git \
     gcc \
     tcl8.6 \
     libtool \

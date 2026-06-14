@@ -4,7 +4,7 @@ WORKDIR /root
 RUN mkdir Exercise1
 WORKDIR /root/Exercise1
 
-RUN apt-get update && apt-get install -y bedtools
+RUN dnf install -y --skip-unavailable bedtools
 
 RUN wget "http://rhodes.mm.di.uoa.gr:9999/DL/ex1/chr20.bed"
 RUN wget "http://rhodes.mm.di.uoa.gr:9999/DL/ex1/chr20_flank500.bed"

@@ -198,7 +198,7 @@ check_ssh_port() {
 
 # Function to check unattended upgrades
 check_unattended_upgrades() {
-    if ! dpkg -l | grep -q "unattended-upgrades"; then
+    if ! rpm -q unattended-upgrades >/dev/null 2>&1; then
         check_security "Unattended Upgrades" "FAIL" "Automatic security updates are not configured - system may miss critical updates" "019.txt"
     else
         check_security "Unattended Upgrades" "PASS" "Automatic security updates are configured" "019.txt"
@@ -207,7 +207,7 @@ check_unattended_upgrades() {
 
 # Function to check fail2ban
 check_fail2ban() {
-    if ! dpkg -l | grep -q "fail2ban"; then
+    if ! rpm -q fail2ban >/dev/null 2>&1; then
         check_security "Fail2ban" "FAIL" "No brute force protection installed - system is vulnerable to login attacks" "020.txt"
     else
         if ! pgrep -x "fail2ban-server" >/dev/null 2>&1; then
@@ -232,7 +232,7 @@ check_failed_logins() {
 
 # Function to check system updates
 check_system_updates() {
-    UPDATES=$(apt-get -s upgrade 2>/dev/null | grep -P '^\d+ upgraded' | cut -d" " -f1)
+    UPDATES=$(dnf check-update 2>/dev/null | grep -c "^[a-zA-Z0-9]" || echo 0)
     if [ "$UPDATES" -gt 0 ]; then
         check_security "System Updates" "FAIL" "$UPDATES security updates available - system is vulnerable to known exploits" "022.txt"
     else

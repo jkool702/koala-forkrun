@@ -3,8 +3,8 @@ mkdir -p ${IN}/deps/
 # install dependencies
 pkgs='ffmpeg unrtf imagemagick libarchive-tools libncurses5-dev libncursesw5-dev zstd liblzma-dev libbz2-dev zip unzip nodejs tcpdump'
 
-if ! dpkg -s $pkgs >/dev/null 2>&1 ; then
-    sudo apt-get install $pkgs -y
+if ! rpm -q $pkgs >/dev/null 2>&1 ; then
+    sudo dnf install -y --skip-unavailable $pkgs
     echo 'Packages Installed'
 fi
 
