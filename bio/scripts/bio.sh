@@ -38,4 +38,4 @@ process_sample() {
 export -f process_sample
 export IN OUT
 
-cat "$IN_NAME" | parallel --jobs "$(nproc)" process_sample {} "$IN" "$OUT"
+cat "$IN_NAME" | frun -j "$(nproc)" -i process_sample {} "$IN" "$OUT"

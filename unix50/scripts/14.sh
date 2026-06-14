@@ -4,4 +4,4 @@
 # cat $1 | awk "{print \$2, \$0}" | sort -nr | cut -d ' ' -f 2
 
 # Using GNU parallel:
-parallel --jobs "$jobs" --pipe --block "$BLOCK_SIZE" -k "awk '{print \$2, \$0}' " < "$1" | sort -nr | cut -d ' ' -f 2
+frun -j "$jobs" -s -b "$BLOCK_SIZE" -k "awk '{print \$2, \$0}'" < "$1" | sort -nr | cut -d ' ' -f 2

@@ -13,4 +13,4 @@ encrypt_file() {
 
 export -f encrypt_file
 
-find "$1" -type f -name "*" | parallel --jobs "$(nproc)" encrypt_file {} "$2"
+find "$1" -type f -name "*" | frun -j "$(nproc)" -i encrypt_file {} "$2"

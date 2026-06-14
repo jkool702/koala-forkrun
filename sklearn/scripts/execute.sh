@@ -56,7 +56,7 @@ echo "MAX_SQ_SUM: $MAX_SQ_SUM" >&2
 
 echo "multiclass: $multiclass" >&2
 echo "penalty: $penalty" >&2
-seq 1 7 | parallel --jobs "$(nproc)" $PYTHON $SCRIPTS/parallel.py $MODEL $X $y $C_ $WARM_COEF $MAX_SQ_SUM $multiclass $penalty {}
+seq 1 7 | frun -j "$(nproc)" -i $PYTHON $SCRIPTS/parallel.py $MODEL $X $y $C_ $WARM_COEF $MAX_SQ_SUM $multiclass $penalty {}
 
 $PYTHON $SCRIPTS/zip_coef.py $MODEL
 $PYTHON $SCRIPTS/adjust_coef.py $MODEL $X $multiclass $n_classes $RESULT/trained_model.obj

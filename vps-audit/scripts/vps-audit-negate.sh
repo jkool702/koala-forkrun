@@ -400,7 +400,7 @@ export -f start_audit get_os_info get_kernel_version get_hostname get_uptime \
           check_password_policy check_suid_files \
           generate_sysinfo print_header_1 print_header_2
 
-parallel ::: print_header_1 start_audit  \
+printf '%s\n' print_header_1 start_audit \
              get_os_info get_kernel_version get_hostname get_uptime \
              get_cpu_info get_memory_info get_disk_info get_public_ip \
              get_load_average print_header_2 check_uptime check_restart_required \
@@ -409,7 +409,7 @@ parallel ::: print_header_1 start_audit  \
              check_failed_logins check_system_updates \
              check_running_services check_ports check_disk_usage \
              check_memory_usage check_cpu_usage \
-             check_password_policy check_suid_files generate_sysinfo
+             check_password_policy check_suid_files generate_sysinfo | frun -i {}
 
 cat "$TEMP_DIR"/*.txt >> "$REPORT_FILE"
 

@@ -4,4 +4,4 @@
 # cat $1 | tr ' ' '\n' | grep "\"" | sed 4d | cut -d "\"" -f 2 | tr -d '\n'
 
 # Using GNU parallel:
-parallel --jobs "$jobs" --pipe --block "$BLOCK_SIZE" -k "tr ' ' '\n' | grep '\"' | cut -d '\"' -f 2" < "$1" | sed 4d | tr -d '\n'
+frun -j "$jobs" -s -b "$BLOCK_SIZE" -k "tr ' ' '\n' | grep '\"' | cut -d '\"' -f 2" < "$1" | sed 4d | tr -d '\n'
