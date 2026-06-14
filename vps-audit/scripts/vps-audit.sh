@@ -1,6 +1,8 @@
 #!/bin/bash
 
 source "$(git rev-parse --show-toplevel)/frun.bash"
+export FORKRUN_EXTRA_VARS="PATH"
+export FORKRUN_EXTRA_FUNCS="print_header_1 get_os_info get_cpu_info get_hostname get_load_average get_disk_info check_uptime check_unattended_upgrades check_failed_logins check_ssh_root_login check_disk_usage check_running_services check_cpu_usage check_ssh_port check_password_policy generate_sysinfo check_restart_required check_memory_usage check_fail2ban check_ports check_system_updates"
 # Colors for output
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
