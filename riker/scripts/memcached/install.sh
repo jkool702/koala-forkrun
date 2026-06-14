@@ -1,9 +1,8 @@
 #!/bin/bash
 
-sudo apt-get install -y git \
+sudo dnf install --skip-unavailable -y git \
     gcc \
-    autotools-dev \
-    automake \
-    libevent-dev
-
+    libevent-devel \
+    autoconf \
+    automake
 

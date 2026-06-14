@@ -1,7 +1,6 @@
-FROM ubuntu:20.04
+FROM fedora:39
 ## Necessary to avoid interactive responses in installations
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update -y && apt-get install -y git
+RUN dnf install -y --skip-unavailable git
 ENV PASH_TOP=/opt/pash
 # download PaSh
 RUN git clone https://github.com/binpash/pash.git /opt/pash

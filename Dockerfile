@@ -1,8 +1,8 @@
-FROM debian:12.7
+FROM fedora:39
 
 WORKDIR /benchmarks
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN dnf install -y --skip-unavailable \
     sudo \
     curl \
     wget \

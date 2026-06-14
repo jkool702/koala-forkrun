@@ -39,11 +39,12 @@ libtool --mode=link $CFLAGS -DHAVE_READLINE=1 -I/usr/include/readline -DHAVE_EDI
 	shell.c sqlite3.c \
 	-lreadline -lncurses  -lm -ldl -lz -lpthread   -rpath "/usr/local/lib"
 
-libtool --mode=compile --tag=CC $CFLAGS -DUSE_TCL_STUBS=1 -c ./src/tclsqlite.c
-libtool --mode=link $CFLAGS   -no-undefined -o libtclsqlite3.la tclsqlite.lo \
-	libsqlite3.la -L/usr/lib/x86_64-linux-gnu -ltclstub8.6 -lm -ldl -lz -lpthread   \
-	-rpath "/usr/share/tcltk/tcl8.6/sqlite3" \
-	-version-info "8:6:8" \
-	-avoid-version
+# Skip Tcl bindings (incompatible with Tcl 9.0)
+# libtool --mode=compile --tag=CC $CFLAGS -DUSE_TCL_STUBS=1 -c ./src/tclsqlite.c
+# libtool --mode=link $CFLAGS -no-undefined -o libtclsqlite3.la tclsqlite.lo \
+#       libsqlite3.la -L/usr/lib/x86_64-linux-gnu -ltclstub8.6 -lm -ldl -lz -lpthread \
+#       -rpath "/usr/share/tcltk/tcl8.6/sqlite3" \
+#       -version-info "8:6:8" \
+#       -avoid-version
 
 # Not using GNU parallel because of dependencies between commands

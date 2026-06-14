@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 PYTHON="python3"
 OUT=${OUT:-$PWD/result}
 TMP=${TMP:-$PWD/tmp}

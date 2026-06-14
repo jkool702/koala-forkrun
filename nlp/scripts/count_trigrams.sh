@@ -1,5 +1,6 @@
 #!/bin/bash 
 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 # Parallelized script for generating trigrams
 
 IN=${IN:-$SUITE_DIR/inputs/pg}

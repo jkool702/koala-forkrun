@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 # 4.1: find number of rounds
 # cat $1 | tr ' ' '\n' | grep '\.' | wc -l
 

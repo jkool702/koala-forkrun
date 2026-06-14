@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 # Using GNU parallel:
 
 [[ -n "$input_file" ]] || { echo "script was not provided with \$input_file"; exit 1; }
