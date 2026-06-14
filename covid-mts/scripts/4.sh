@@ -1,5 +1,6 @@
 #!/bin/bash
 # Hours monitored each day
+source "$(git rev-parse --show-toplevel)/frun.bash"
 
 # Using GNU parallel:
 

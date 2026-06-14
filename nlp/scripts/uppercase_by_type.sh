@@ -1,5 +1,6 @@
 #!/bin/bash
 # Parallelized script for processing input files
+source "$(git rev-parse --show-toplevel)/frun.bash"
 
 IN=${IN:-$SUITE_DIR/inputs/pg}
 OUT=${1:-$SUITE_DIR/outputs/6_1_2/}

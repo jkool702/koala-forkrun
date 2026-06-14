@@ -1,5 +1,6 @@
 #!/bin/sh
 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 # CFLAGS="-std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX"
 
 # gcc $CFLAGS -c `ls *.c | grep -v lua_`

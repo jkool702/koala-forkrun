@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 # Colors for output
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'

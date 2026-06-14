@@ -1,5 +1,6 @@
 #!/bin/bash
 # Issue: Deadlocks as s2 is read from more than one parallel copy
+source "$(git rev-parse --show-toplevel)/frun.bash"
 # mkfifo s1 s2
 # TEMP_C1="/tmp/{/}.out1"
 # TEMP_C2="/tmp/{/}.out2"

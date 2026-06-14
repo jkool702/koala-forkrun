@@ -1,5 +1,6 @@
 #!/bin/bash
 # Using GNU parallel:
+source "$(git rev-parse --show-toplevel)/frun.bash"
 
 mkdir -p $2
 
@@ -33,4 +34,4 @@ export -f pure_func
 
 export OUTPUT_DIR=$2
 
-find "$1" -type f | frun -j "$(nproc)" -i 'cat "{}" | pure_func > '"$OUTPUT_DIR"'/"$(basename "{}")"
+find "$1" -type f | frun -j "$(nproc)" -i 'cat "{}" | pure_func > '"$OUTPUT_DIR"'/"$(basename "{}")"'

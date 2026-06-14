@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 cd "$(dirname "$0")"/.. || exit 1
 
 IN="$1"

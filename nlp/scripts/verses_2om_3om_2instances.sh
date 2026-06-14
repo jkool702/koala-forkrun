@@ -1,4 +1,6 @@
+#!/usr/bin/env bash
 # !/bin/bash
+source "$(git rev-parse --show-toplevel)/frun.bash"
 
 # Parallelized script for processing light patterns in input files
 
