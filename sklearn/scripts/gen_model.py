@@ -6,8 +6,7 @@ import sys
 import os
 
 reg = LogisticRegression(max_iter=int(sys.argv[1]), 
-                         solver='newton-cholesky', 
-                         multi_class='ovr')
+                         solver='newton-cholesky')
 
 tmp = os.environ.get('TMP')
 filepath = os.path.join(tmp, 'model.obj')

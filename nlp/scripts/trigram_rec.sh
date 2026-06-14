@@ -16,8 +16,8 @@ pure_func() {
 
     TEMPDIR=$(mktemp -d)
     tr -sc '[A-Z][a-z]' '[\012*]' > "${TEMPDIR}/${input}.words"
-    tail +2 "${TEMPDIR}/${input}.words" > "${TEMPDIR}/${input}.nextwords"
-    tail +3 "${TEMPDIR}/${input}.words" > "${TEMPDIR}/${input}.nextwords2"
+    tail -n +2 "${TEMPDIR}/${input}.words" > "${TEMPDIR}/${input}.nextwords"
+    tail -n +3 "${TEMPDIR}/${input}.words" > "${TEMPDIR}/${input}.nextwords2"
     paste "${TEMPDIR}/${input}.words" "${TEMPDIR}/${input}.nextwords" "${TEMPDIR}/${input}.nextwords2" | sort | uniq -c | sort -nr | sed 5q > "${out_dir}/${input}.${category}.out"
     rm -rf "${TEMPDIR}"
 }

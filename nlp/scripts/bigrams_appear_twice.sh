@@ -15,7 +15,7 @@ pure_func() {
     TEMPDIR=$(mktemp -d)
 
     cat "$IN/$input" | tr -c 'A-Za-z' '[\n*]' | grep -v "^\s*$" > "${TEMPDIR}/${input}.input.words"
-    tail +2 "${TEMPDIR}/${input}.input.words" > "${TEMPDIR}/${input}.input.nextwords"
+    tail -n +2 "${TEMPDIR}/${input}.input.words" > "${TEMPDIR}/${input}.input.nextwords"
     paste "${TEMPDIR}/${input}.input.words" "${TEMPDIR}/${input}.input.nextwords" | sort | uniq -c > "${TEMPDIR}/${input}.input.bigrams"
     awk '$1 == 2 {print $2, $3}' "${TEMPDIR}/${input}.input.bigrams" > "${OUT}/${input}.out"
 
