@@ -11,12 +11,12 @@ INCLUDES='-Isrc/liblzma/api -Isrc/liblzma/common -Isrc/liblzma/check -Isrc/liblz
 # mv src/liblzma/check/crc64_tablegen.c src/liblzma/check/crc64_tablegen.c.exclude
 # mv src/liblzma/rangecoder/price_tablegen.c src/liblzma/rangecoder/price_tablegen.c.exclude
 
-frun -i ::: \
+printf '%s\n' \
     "mv src/liblzma/check/crc32_small.c src/liblzma/check/crc32_small.c.exclude" \
     "mv src/liblzma/check/crc64_small.c src/liblzma/check/crc64_small.c.exclude" \
     "mv src/liblzma/check/crc32_tablegen.c src/liblzma/check/crc32_tablegen.c.exclude" \
     "mv src/liblzma/check/crc64_tablegen.c src/liblzma/check/crc64_tablegen.c.exclude" \
-    "mv src/liblzma/rangecoder/price_tablegen.c src/liblzma/rangecoder/price_tablegen.c.exclude"
+    "mv src/liblzma/rangecoder/price_tablegen.c src/liblzma/rangecoder/price_tablegen.c.exclude" | frun -j5 eval
 
 # Build liblzma.so.5.3.1
 gcc -fPIC -Wl,--version-script=$PWD/src/liblzma/liblzma.map -shared -Wl,-soname,liblzma.so.5 -o liblzma.so.5.3.1 $CFLAGS src/common/*.c src/liblzma/*/*.c $INCLUDES
@@ -28,12 +28,12 @@ gcc -fPIC -Wl,--version-script=$PWD/src/liblzma/liblzma.map -shared -Wl,-soname,
 # mv src/liblzma/check/crc64_tablegen.c.exclude src/liblzma/check/crc64_tablegen.c
 # mv src/liblzma/rangecoder/price_tablegen.c.exclude src/liblzma/rangecoder/price_tablegen.c
 
-frun -i ::: \
+printf '%s\n' \
     "mv src/liblzma/check/crc32_small.c.exclude src/liblzma/check/crc32_small.c" \
     "mv src/liblzma/check/crc64_small.c.exclude src/liblzma/check/crc64_small.c" \
     "mv src/liblzma/check/crc32_tablegen.c.exclude src/liblzma/check/crc32_tablegen.c" \
     "mv src/liblzma/check/crc64_tablegen.c.exclude src/liblzma/check/crc64_tablegen.c" \
-    "mv src/liblzma/rangecoder/price_tablegen.c.exclude src/liblzma/rangecoder/price_tablegen.c"
+    "mv src/liblzma/rangecoder/price_tablegen.c.exclude src/liblzma/rangecoder/price_tablegen.c" | frun -j5 eval
 
 # Link to liblzma.so
 rm -f liblzma.so

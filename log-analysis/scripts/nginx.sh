@@ -9,14 +9,14 @@ pure_func() {
 
     tee "$tempfile" | cut -d '"' -f3 | cut -d ' ' -f2 | sort | uniq -c | sort -rn > "$outputdir/output1.txt"
 
-    printf '%s\n' \
+    printf '%s\\n' \
         "awk '{print \$9}' $tempfile | sort | uniq -c | sort -rn > $outputdir/output2.txt" \
         "awk '(\$9 ~ /404/)' $tempfile | awk '{print \$7}' | sort | uniq -c | sort -rn > $outputdir/output3.txt" \
         "awk '(\$9 ~ /502/)' $tempfile | awk '{print \$7}' | sort | uniq -c | sort -r > $outputdir/output4.txt" \
         "awk -F'\"' '(\$2 ~ \"/wp-admin/install.php\"){print \$1}' $tempfile | awk '{print \$1}' | sort | uniq -c | sort -r > $outputdir/output5.txt" \
         "awk '(\$9 ~ /404/)' $tempfile | awk -F'\"' '(\$2 ~ \"^GET .*.php\")' | awk '{print \$7}' | sort | uniq -c | sort -r | head -n 20 > $outputdir/output6.txt" \
         "awk -F'\"' '{print \$2}' $tempfile  | awk '{print \$2}' | sort | uniq -c | sort -r > $outputdir/output7.txt" \
-        "awk -F'\"' '(\$2 ~ \"ref\"){print \$2}' $tempfile | awk '{print \$2}' | sort | uniq -c | sort -r > $outputdir/output8.txt" | frun -i {}
+        "awk -F'\"' '(\$2 ~ \"ref\"){print \$2}' $tempfile | awk '{print \$2}' | sort | uniq -c | sort -r > $outputdir/output8.txt" | frun -j7 eval
 
     # Combine results
     cat "$outputdir"/output*.txt

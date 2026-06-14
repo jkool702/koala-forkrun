@@ -8,8 +8,10 @@
 export input_file
 export statistics_dir
 
-cat "${input_file}" | cut -c 89-92 | grep -v 999 | \
-    frun -s ::: \
+cat "${input_file}" | cut -c 89-92 | grep -v 999 | {
+    read -r data
+    printf '%s\n' "$data" "$data" "$data" | frun -j3 eval \
         "sort -rn | head -n1 > ${statistics_dir}/max.txt" \
         "sort -n | head -n1 > ${statistics_dir}/min.txt" \
         "awk '{ total += \$1; count++ } END { print total/count }' > ${statistics_dir}/average.txt"
+}
