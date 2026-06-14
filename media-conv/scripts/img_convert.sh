@@ -13,5 +13,5 @@ export FORKRUN_EXTRA_FUNCS="pure_func"
 export dest_dir="$2"
 export FORKRUN_EXTRA_VARS="dest_dir"
 
-find "$1" -type f | frun -j "$(nproc)" -i \
+find "$1" -type f | frun -k -j "$(nproc)" -i \
     'cat "{}" | pure_func > '"$dest_dir"'/"$(basename "{}")"'
