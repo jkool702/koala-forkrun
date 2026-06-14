@@ -213,7 +213,7 @@ check_ssh_port() {
 
 # Function to check unattended upgrades
 check_unattended_upgrades() {
-    if dpkg -l | grep -q "unattended-upgrades"; then
+    if rpm -qa | grep -q "unattended-upgrades"; then
         check_security "Unattended Upgrades" "PASS" "Automatic security updates are configured" "019.txt"
     else
         check_security "Unattended Upgrades" "FAIL" "Automatic security updates are not configured - system may miss critical updates" "019.txt"
@@ -222,7 +222,7 @@ check_unattended_upgrades() {
 
 # Function to check fail2ban
 check_fail2ban() {
-    if dpkg -l | grep -q "fail2ban"; then
+    if rpm -qa | grep -q "fail2ban"; then
         if pgrep -x "fail2ban-server" >/dev/null 2>&1; then
             check_security "Fail2ban" "PASS" "Brute force protection is active and running" "020.txt"
         else
@@ -404,7 +404,7 @@ export -f start_audit get_os_info get_kernel_version get_hostname get_uptime \
           check_failed_logins check_system_updates \
           check_running_services check_ports check_disk_usage \
           check_memory_usage check_cpu_usage check_sudo_logging \
-          check_password_policy check_suid_files \
+          check_password_policy check_suid_files check_security \
           generate_sysinfo print_header_1 print_header_2
 
 printf '%s\n' print_header_1 start_audit \

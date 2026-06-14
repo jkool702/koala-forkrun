@@ -1,5 +1,10 @@
 #!/usr/bin/node
 
+// Handle EPIPE errors when downstream processes close early (e.g., head -n)
+process.stdout.on('error', function(err) {
+    if (err.code === 'EPIPE') process.exit(0);
+});
+
 var readline = require('readline');
 var natural = require('natural');
 

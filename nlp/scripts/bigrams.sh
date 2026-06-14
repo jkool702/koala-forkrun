@@ -14,7 +14,7 @@ pure_func() {
 
     # Process the input file
     cat "$IN_DIR/$input" | tr -c 'A-Za-z' '[\n*]' | grep -v "^\s*$" > ${TEMPDIR}/${input}.input.words
-    tail +2 ${TEMPDIR}/${input}.input.words > ${TEMPDIR}/${input}.input.nextwords
+    tail -n +2 ${TEMPDIR}/${input}.input.words > ${TEMPDIR}/${input}.input.nextwords
     paste ${TEMPDIR}/${input}.input.words ${TEMPDIR}/${input}.input.nextwords | sort | uniq -c > "$OUT_DIR/${input}.input.bigrams.out"
 
     # Cleanup temporary directory

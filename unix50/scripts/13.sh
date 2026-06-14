@@ -5,4 +5,4 @@ source "$(git rev-parse --show-toplevel)/frun.bash"
 # cat $1 | grep 'print' | cut -d "\"" -f 2 | cut -c 1-12
 
 # Using GNU parallel:
-frun -j "$jobs" -s -b "$BLOCK_SIZE" -k "grep 'print' | cut -d '\"' -f 2 | cut -c 1-12" < "$1"
+frun -j "$jobs" -s -b "$BLOCK_SIZE" -k bash -c "grep 'print' | cut -d '\"' -f 2 | cut -c 1-12" < "$1"

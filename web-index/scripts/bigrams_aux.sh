@@ -5,7 +5,7 @@
 
 sed '$d' s2 > s3 &
 tee s2 |
-    tail +2 |
+    tail -n +2 |
     paste s3 -
 rm s2
 rm s3

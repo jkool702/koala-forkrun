@@ -5,4 +5,4 @@ source "$(git rev-parse --show-toplevel)/frun.bash"
 # cat $1 | grep 'UNIX' | cut -f 1
 
 # Using frun:
-frun -j "$jobs" -s -b "$BLOCK_SIZE" -k "grep 'UNIX' | cut -f 1" < "$1"
+frun -j "$jobs" -s -b "$BLOCK_SIZE" -k bash -c "grep 'UNIX' | cut -f 1" < "$1"

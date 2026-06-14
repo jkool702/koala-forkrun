@@ -20,8 +20,8 @@ pure_func() {
         tr -c 'A-Za-z' '[\n*]' |
         grep -v "^\s*$" > "${TEMPDIR}/${input}.words"
 
-    tail +2 "${TEMPDIR}/${input}.words" > "${TEMPDIR}/${input}.nextwords"
-    tail +2 "${TEMPDIR}/${input}.words" > "${TEMPDIR}/${input}.nextwords2"
+    tail -n +2 "${TEMPDIR}/${input}.words" > "${TEMPDIR}/${input}.nextwords"
+    tail -n +2 "${TEMPDIR}/${input}.words" > "${TEMPDIR}/${input}.nextwords2"
 
     paste "${TEMPDIR}/${input}.words" "${TEMPDIR}/${input}.nextwords" "${TEMPDIR}/${input}.nextwords2" |
         sort |
