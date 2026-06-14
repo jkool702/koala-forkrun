@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pkgs="curl wget unzip gzip coreutils ffmpeg unrtf imagemagick zstd git xz-utils"
+pkgs="curl wget unzip gzip coreutils ffmpeg unrtf ImageMagick zstd git xz-utils"
 
 for pkg in $pkgs; do
     if ! rpm -q "$pkg" &> /dev/null; then

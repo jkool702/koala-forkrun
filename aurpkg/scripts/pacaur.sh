@@ -29,7 +29,7 @@ run_tests() {
     curl --insecure -o PKGBUILD "$URL/$pkg/PKGBUILD" 2>/dev/null || echo ' '
 
     #info "fetch required pgp keys from PKGBUILD"
-    gpg --recv-keys $(sed -n "s:^validpgpkeys=('\([0-9A-Fa-fx]\+\)').*$:\1:p" PKGBUILD)
+    gpg --recv-keys $(sed -n "s:^validpgpkeys=['\([0-9A-Fa-fx]\+\)'.*$:\1:p" PKGBUILD)
     # Some failure is expected here, so we ignore the return code
     {
         printf '[convert] %s -> pacscript\n' "$pkg"
@@ -80,7 +80,8 @@ export -f grab_scalar
 export -f grab_array
 export OUT
 export URL
-export FORKRUN_EXTRA_FUNCS="mkcd"
+export FORKRUN_EXTRA_FUNCS="mkcd grab_scalar grab_array run_tests"
+export FORKRUN_EXTRA_VARS="OUT URL"
 
 
 # loop over required packages

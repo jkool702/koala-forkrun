@@ -19,5 +19,7 @@ pure_func() {
 }
 export -f pure_func
 export FORKRUN_EXTRA_FUNCS="pure_func"
+export OUTPUT_DIR="$2"
+export FORKRUN_EXTRA_VARS="OUTPUT_DIR"
 
-find "$1" -type f | frun -i 'cat "{}" | pure_func > '"$2"'/"$(basename "{}").log'
+find "$1" -type f | frun -i 'cat "{}" | pure_func > '"$OUTPUT_DIR"'/"$(basename "{}").log"'
