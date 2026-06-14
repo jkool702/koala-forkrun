@@ -22,18 +22,19 @@ sudo find $download_dir -maxdepth 1 -mindepth 1 -type f -name '*.com' -exec cp {
 
 sudo find "$install_dir" -maxdepth 1 -mindepth 1 -type f -name '*.com' -exec chmod 755 {} \;
 
-sudo dpkg --add-architecture i386
-sudo sh -c "cd $install_dir ; ./install.com +src $download_dir option +type linux212_64"
+# Note: i386 architecture and some Debian-specific packages not available on Fedora
+# sudo dpkg --add-architecture i386
+# sudo sh -c "cd $install_dir ; ./install.com +src $download_dir option +type linux212_64"
 
-sudo apt-get update
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
-sudo apt-get install -y csh
-sudo apt-get install -y default-jdk
-sudo apt-get install -y default-jre
-sudo apt-get install -y libc6:i386
-sudo apt-get install -y libstdc++6:i386
-sudo apt-get install -y libx11-6:i386
-sudo apt-get install -y libxext6:i386
-sudo apt-get install -y msttcorefonts
-sudo apt-get install -y curl
+sudo dnf install -y --skip-unavailable csh
+sudo dnf install -y --skip-unavailable java-latest-openjdk
+sudo dnf install -y --skip-unavailable java-latest-openjdk-headless
+# i386 libraries not available on Fedora in same form
+# sudo apt-get install -y libc6:i386
+# sudo apt-get install -y libstdc++6:i386
+# sudo apt-get install -y libx11-6:i386
+# sudo apt-get install -y libxext6:i386
+sudo dnf install -y --skip-unavailable mscore-fonts-all
+sudo dnf install -y --skip-unavailable curl
 

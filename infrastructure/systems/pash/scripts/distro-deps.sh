@@ -57,11 +57,9 @@ case "$distro" in
             echo "$pkgs" | sort
             exit 0
         fi
-        echo "Running preparation apt install:"
-        echo "|-- running apt update..."
-        $SUDO apt-get update
-        echo "|-- running apt install..."
-        $SUDO apt-get install -y $pkgs
+        echo "Running preparation dnf install:"
+        echo "|-- running dnf install..."
+        $SUDO dnf install -y --skip-unavailable $pkgs
         ;;
     fedora*) 
         pkgs="$pkgs autoconf diffutils gcc-c++ glibc-langpack-en hostname libjpeg-devel make nc pip procps python-devel python3-pip python3-setuptools python3-setuptools python3-testresources zlib-devel"

@@ -1,4 +1,4 @@
 pkgs='imagemagick'
-if ! dpkg -s $pkgs >/dev/null 2>&1; then
-  sudo apt-get install $pkgs
+if ! rpm -q $pkgs >/dev/null 2>&1; then
+  sudo dnf install -y --skip-unavailable $pkgs
 fi

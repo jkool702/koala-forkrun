@@ -80,7 +80,7 @@ usage() {
 install_eval_deps() {
     echo "Installing evaluation dependencies (needs sudo)"
     # needed for majority of the benchmarks (not available in docker instances)
-    sudo apt-get install unzip
+    sudo dnf install -y --skip-unavailable unzip
     paths="$(find $PASH_TOP/evaluation/benchmarks -name install-deps.sh)"
     for f in $(echo $paths); do
         path=$(dirname $(readlink -f $f))
