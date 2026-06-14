@@ -9,7 +9,7 @@ pure_func() {
 }
 export -f pure_func
 export FORKRUN_EXTRA_FUNCS="pure_func"
-
 export dest="$2"
+export FORKRUN_EXTRA_VARS="dest"
 
 find "$1" -type f | frun -i 'cat "{}" | pure_func > '"$dest"'/"$(basename "{}").mp3"'
