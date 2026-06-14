@@ -20,6 +20,7 @@ process_file() {
         sed 5q > "${out_dir}/${input}.out"
 }
 export -f process_file
+export FORKRUN_EXTRA_FUNCS="process_file"
 
 ls "${IN}" | head -n "${ENTRIES}" | frun -j "$(nproc)" -i process_file {} "${IN}" "${OUT}"
 

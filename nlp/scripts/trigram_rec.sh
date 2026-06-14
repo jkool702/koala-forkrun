@@ -22,6 +22,7 @@ pure_func() {
     rm -rf "${TEMPDIR}"
 }
 export -f pure_func
+export FORKRUN_EXTRA_FUNCS="pure_func process_file"
 
 process_file() {
     input=$1
@@ -32,6 +33,7 @@ process_file() {
     cat "$in_dir/$input" | grep 'And he said' | pure_func "$input" "$in_dir" "$out_dir" "1"
 }
 export -f process_file
+export FORKRUN_EXTRA_FUNCS="pure_func process_file"
 
 ls "${IN}" | head -n "${ENTRIES}" | frun -j "$(nproc)" -i process_file {} "${IN}" "${OUT}"
 

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo apt install -y gcc make wget
+sudo dnf install -y gcc make wget
 

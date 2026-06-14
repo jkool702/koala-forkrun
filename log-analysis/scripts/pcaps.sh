@@ -18,5 +18,6 @@ pure_func() {
     rm -f $tempfile
 }
 export -f pure_func
+export FORKRUN_EXTRA_FUNCS="pure_func"
 
 find "$1" -type f | frun -i 'cat "{}" | pure_func > '"$2"'/"$(basename "{}").log'

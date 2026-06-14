@@ -23,6 +23,7 @@ pure_func() {
 }
 
 export -f pure_func
+export FORKRUN_EXTRA_FUNCS="pure_func"
 
 ls "${IN}" | head -n "${ENTRIES}" | frun -j "$(nproc)" -i pure_func {} "${IN}" "${OUT}"
 
