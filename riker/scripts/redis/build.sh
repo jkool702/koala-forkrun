@@ -53,10 +53,10 @@ OBJ2="anet.o adlist.o dict.o redis-cli.o zmalloc.o release.o ae.o crcspeed.o crc
 
 # Build redis-benchmark
 OBJ3="ae.o anet.o redis-benchmark.o adlist.o dict.o zmalloc.o release.o crcspeed.o crc64.o siphash.o crc16.o monotonic.o cli_common.o mt19937-64.o"
-frun -i ::: \
+printf '%s\n' \
     "gcc $CFLAGS -o redis-server $OBJ1 $LDFLAGS" \
     "gcc $CFLAGS -o redis-cli $OBJ2 $LDFLAGS" \
-    "gcc $CFLAGS -o redis-benchmark $OBJ3 $LDFLAGS"
+    "gcc $CFLAGS -o redis-benchmark $OBJ3 $LDFLAGS" | frun -j3 eval
 
 install redis-server redis-sentinel
 install redis-server redis-check-aof
