@@ -1,6 +1,6 @@
 FROM hs-riker
 
-RUN apt-get update && apt-get install -y git wget gcc make libgmp-dev perl libacl1-dev libattr1-dev libcap-dev
+RUN dnf install -y --skip-unavailable git wget gcc make libgmp-dev perl libacl1-dev libattr1-dev libcap-dev
 
 WORKDIR /
 

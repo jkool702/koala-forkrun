@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 IN="$1"
 OUT="$2"
 

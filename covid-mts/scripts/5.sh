@@ -1,5 +1,6 @@
 #!/bin/bash
 # Hours each bus is active each day
+source "$(git rev-parse --show-toplevel)/frun.bash"
 sed_chunk() {
     sed 's/T\(..\):..:../,\1/'
 }

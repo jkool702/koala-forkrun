@@ -1,5 +1,6 @@
 #!/bin/bash
 # encrypt all files in a directory 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 
 # Using GNU parallel:
 

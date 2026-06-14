@@ -1,7 +1,7 @@
 FROM hs-riker
 
-RUN apt-get update
-RUN apt-get install -y git gcc-11 make libreadline-dev bsdmainutils
+RUN dnf install -y --skip-unavailable
+RUN dnf install -y --skip-unavailable git gcc-11 make libreadline-dev bsdmainutils
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 1
 
 WORKDIR /root

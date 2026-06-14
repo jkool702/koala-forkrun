@@ -1,8 +1,6 @@
 #!/bin/bash
 
-sudo apt-get update
-
-sudo apt-get install -y \
+sudo dnf install --skip-unavailable -y \
   sudo \
   coreutils \
   wget \

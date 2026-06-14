@@ -1,12 +1,12 @@
 #!/bin/bash
 
-sudo apt-get install -y git \
+sudo dnf install --skip-unavailable -y git \
     gcc \
     make \
-    libncurses-dev \
-    libsm-dev \
-    libice-dev \
-    libxt-dev \
-    libx11-dev \
-    libxdmcp-dev \
-    libselinux-dev
+    ncurses-devel \
+    libSM-devel \
+    libICE-devel \
+    libXt-devel \
+    libX11-devel \
+    libXdmcp-devel \
+    libselinux-devel

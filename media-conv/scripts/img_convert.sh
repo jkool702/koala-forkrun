@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 # Using GNU parallel:
 
 mkdir -p "$2"

@@ -1,4 +1,6 @@
+#!/usr/bin/env bash
 # #!/bin/bash 
+source "$(git rev-parse --show-toplevel)/frun.bash"
 
 # Calculate the bigrams (based on 4_3.sh script)
 IN=${IN:-$SUITE_DIR/inputs/pg}

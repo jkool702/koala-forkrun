@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo apt-get install -y git gcc clang
+sudo dnf install --skip-unavailable -y git gcc clang
 

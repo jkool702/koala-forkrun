@@ -1,5 +1,6 @@
 #!/bin/bash
 # Days a vehicle is on the road
+source "$(git rev-parse --show-toplevel)/frun.bash"
 
 # Using GNU parallel:
 

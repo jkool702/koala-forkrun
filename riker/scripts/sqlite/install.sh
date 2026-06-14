@@ -1,10 +1,8 @@
 #!/bin/bash
 
-sudo apt-get install -y git \
+sudo dnf install --skip-unavailable -y git \
     gcc \
-    tcl8.6 \
+    tcl \
     libtool \
-    libtool-bin \
-    libreadline-dev \
-    tcl8.6-dev
-
+    readline-devel \
+    tcl-devel

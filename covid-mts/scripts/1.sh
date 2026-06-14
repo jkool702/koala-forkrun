@@ -1,5 +1,6 @@
 #!/bin/bash
 # Vehicles on the road per day
+source "$(git rev-parse --show-toplevel)/frun.bash"
 
 # Using GNU parallel:
 

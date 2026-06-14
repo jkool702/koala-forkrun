@@ -8,8 +8,7 @@ echo "$tz" | sudo tee /etc/timezone > /dev/null
 sudo rm -f /etc/localtime
 sudo ln -s "/usr/share/zoneinfo/$tz" /etc/localtime
 
-sudo apt-get update
-sudo apt-get install -y build-essential
+sudo dnf install --skip-unavailable -y gcc make
 
 small_benchmark=(
     "lua"

@@ -1,5 +1,6 @@
 #!/bin/bash
 # Parallelized script for processing with two input sources
+source "$(git rev-parse --show-toplevel)/frun.bash"
 
 IN=${IN:-$SUITE_DIR/inputs/pg}
 INPUT2=${INPUT2:-$SUITE_DIR/inputs/exodus}
