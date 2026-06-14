@@ -23,7 +23,7 @@ standard_linux_tools = [
     'sh', 'bc', 'which','find', 
     'readonly', 'strings', 'cmp', 
     'gpg', 'lscpu', 'free', 'sysctl', 'ufw', 'firewall-cmd', 'sudo', 
-    'nft', 'dpkg', 'pgrep', 'apt-get', 'ps', 'netstat', 'ss'
+    'nft', 'rpm', 'pgrep', 'dnf', 'ps', 'netstat', 'ss'
 ]
 
 def command_distribution(df, outdir=None):

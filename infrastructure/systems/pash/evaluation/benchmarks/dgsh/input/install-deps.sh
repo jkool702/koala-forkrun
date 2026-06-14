@@ -23,10 +23,8 @@ sudo find $download_dir -maxdepth 1 -mindepth 1 -type f -name '*.com' -exec cp {
 sudo find "$install_dir" -maxdepth 1 -mindepth 1 -type f -name '*.com' -exec chmod 755 {} \;
 
 # Note: i386 architecture and some Debian-specific packages not available on Fedora
-# sudo dpkg --add-architecture i386
 # sudo sh -c "cd $install_dir ; ./install.com +src $download_dir option +type linux212_64"
 
-echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
 sudo dnf install -y --skip-unavailable csh
 sudo dnf install -y --skip-unavailable java-latest-openjdk
 sudo dnf install -y --skip-unavailable java-latest-openjdk-headless

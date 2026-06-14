@@ -244,7 +244,7 @@ check_failed_logins() {
 
 # Function to check system updates
 check_system_updates() {
-    updates=$(apt-get -s upgrade 2>/dev/null | grep -P '^\d+ upgraded' | cut -d" " -f1)
+    updates=$(dnf check-update 2>/dev/null | grep -c "^[[:alnum:]]" || echo 0)
     if [ "$updates" -eq 0 ]; then
         check_security "System Updates" "PASS" "All system packages are up to date" "022.txt"
     else

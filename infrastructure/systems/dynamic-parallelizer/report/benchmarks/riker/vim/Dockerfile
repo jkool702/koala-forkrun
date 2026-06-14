@@ -1,6 +1,6 @@
 FROM hs-riker
 
-RUN apt-get update && apt-get install -y git \
+RUN dnf install -y --skip-unavailable git \
     gcc \
     make \
     libncurses-dev \

@@ -1,5 +1,5 @@
 FROM hs
-RUN apt update && apt-get install -q -y gettext libsvn-perl apache2 cvs cvsps git gnupg subversion make libssl-dev libcurl4-openssl-dev libexpat-dev wget sudo default-jre tcl tk gettext zlib1g-dev perl-modules liberror-perl libauthen-sasl-perl libemail-valid-perl libio-pty-perl libio-socket-ssl-perl libnet-smtp-ssl-perl libdbd-sqlite3-perl libcgi-pm-perl
+RUN dnf install -y --skip-unavailable gettext libsvn-perl apache2 cvs cvsps git gnupg subversion make libssl-dev libcurl4-openssl-dev libexpat-dev wget sudo default-jre tcl tk gettext zlib1g-dev perl-modules liberror-perl libauthen-sasl-perl libemail-valid-perl libio-pty-perl libio-socket-ssl-perl libnet-smtp-ssl-perl libdbd-sqlite3-perl libcgi-pm-perl
 RUN useradd -m hsuser
 USER hsuser
 WORKDIR /home/hsuser/

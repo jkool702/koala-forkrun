@@ -17,9 +17,9 @@ mkdir -p $PW
 mkdir -p ${PASH_TOP}/evaluation/benchmarks/bio/output
 # install dependencies
 pkgs='samtools'
-if ! dpkg -s $pkgs >/dev/null 2>&1; then
-    sudo apt-get install $pkgs
-    var=$(dpkg -s samtools | grep Version)
+if ! rpm -q $pkgs >/dev/null 2>&1; then
+    sudo dnf install -y --skip-unavailable $pkgs
+    var=$(rpm -q samtools | grep Version)
     if [[ ! $var == "Version: 1.7-1" ]]; then                                
         printf "${RED}Invalid Samtools Version\n"                            
         printf "Samtools Version: 1.7 (using htslib 1.7-2) IS required{NC}\n"
