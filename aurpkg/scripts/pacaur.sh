@@ -80,6 +80,7 @@ export -f grab_scalar
 export -f grab_array
 export OUT
 export URL
+export FORKRUN_EXTRA_FUNCS="mkcd"
 
 
 # loop over required packages

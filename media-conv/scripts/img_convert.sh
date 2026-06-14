@@ -10,6 +10,7 @@ pure_func () {
     convert -resize 70% "-" "-"
 }
 export -f pure_func
+export FORKRUN_EXTRA_FUNCS="pure_func"
 
 export dest_dir="$2"
 

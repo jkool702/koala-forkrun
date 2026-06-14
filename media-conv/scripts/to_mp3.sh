@@ -8,6 +8,7 @@ pure_func() {
     ffmpeg -y -i pipe:0 -f mp3 -ab 192000 pipe:1 2>/dev/null
 }
 export -f pure_func
+export FORKRUN_EXTRA_FUNCS="pure_func"
 
 export dest="$2"
 

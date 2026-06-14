@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo apt install -y git gcc make pkg-config tcl
+sudo dnf install -y git gcc make pkg-config tcl

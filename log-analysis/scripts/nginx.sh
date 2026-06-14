@@ -34,5 +34,6 @@ pure_func() {
 export -f pure_func
 
 export OUTPUT_DIR=$2
+export FORKRUN_EXTRA_FUNCS="pure_func"
 
 find "$1" -type f | frun -j "$(nproc)" -i 'cat "{}" | pure_func > '"$OUTPUT_DIR"'/"$(basename "{}")"'
