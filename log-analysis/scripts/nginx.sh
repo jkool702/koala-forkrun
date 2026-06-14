@@ -10,7 +10,7 @@ pure_func() {
 
     tee "$tempfile" | cut -d '"' -f3 | cut -d ' ' -f2 | sort | uniq -c | sort -rn > "$outputdir/output1.txt"
 
-    printf '%s\\n' \
+    printf '%s\n' \
         "awk '{print \$9}' $tempfile | sort | uniq -c | sort -rn > $outputdir/output2.txt" \
         "awk '(\$9 ~ /404/)' $tempfile | awk '{print \$7}' | sort | uniq -c | sort -rn > $outputdir/output3.txt" \
         "awk '(\$9 ~ /502/)' $tempfile | awk '{print \$7}' | sort | uniq -c | sort -r > $outputdir/output4.txt" \
