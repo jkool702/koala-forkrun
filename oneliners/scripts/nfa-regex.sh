@@ -6,4 +6,4 @@ source "$(git rev-parse --show-toplevel)/frun.bash"
 
 # using GNU parallel
 
-cat "$1" | tr A-Z a-z | frun -s -k -b "$BLOCK_SIZE" "grep '\(.\).*\1\(.\).*\2\(.\).*\3\(.\).*\4'"
+cat "$1" | tr A-Z a-z | frun -s -k -b "$BLOCK_SIZE" bash -c "grep '\(.\).*\1\(.\).*\2\(.\).*\3\(.\).*\4'"

@@ -4,7 +4,7 @@ source "$(git rev-parse --show-toplevel)/frun.bash"
 
 # cat $1 | tr -c 'A-Za-z' '[\n*]' | grep -v "^\s*$" | tr A-Z a-z | sort | uniq -c | sort -rn 
 
-cat "$1" | frun -s -b "$BLOCK_SIZE" '
+cat "$1" | frun -s -b "$BLOCK_SIZE" bash -c '
   tr -c "A-Za-z" "[\n*]" |
   grep -v "^[[:space:]]*$" |
   tr A-Z a-z
