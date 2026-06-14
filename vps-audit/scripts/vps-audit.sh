@@ -404,7 +404,7 @@ export -f start_audit get_os_info get_kernel_version get_hostname get_uptime \
           check_failed_logins check_system_updates \
           check_running_services check_ports check_disk_usage \
           check_memory_usage check_cpu_usage check_sudo_logging \
-          check_password_policy check_suid_files \
+          check_password_policy check_suid_files check_security \
           generate_sysinfo print_header_1 print_header_2
 
 printf '%s\n' print_header_1 start_audit \

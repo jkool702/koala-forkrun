@@ -5,4 +5,4 @@ source "$(git rev-parse --show-toplevel)/frun.bash"
 # cat $1 | grep '(' | cut -d '(' -f 2 | cut -d ')' -f 1 | head -n 1
 
 # Using frun:
-frun -j "$jobs" -s -b "$BLOCK_SIZE" -k "grep '(' | cut -d '(' -f 2 | cut -d ')' -f 1" < "$1" | head -n 1
+frun -j "$jobs" -s -b "$BLOCK_SIZE" -k bash -c "grep '(' | cut -d '(' -f 2 | cut -d ')' -f 1" < "$1" | head -n 1

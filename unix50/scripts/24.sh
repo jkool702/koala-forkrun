@@ -5,4 +5,4 @@ source "$(git rev-parse --show-toplevel)/frun.bash"
 # cat $1 | cut -c 1-1 | tr -d '\n'
 
 # Using GNU parallel:
-frun -j "$jobs" -s -b "$BLOCK_SIZE" -k "cut -c 1-1" < "$1" | tr -d '\n'
+frun -j "$jobs" -s -b "$BLOCK_SIZE" -k bash -c "cut -c 1-1" < "$1" | tr -d '\n'

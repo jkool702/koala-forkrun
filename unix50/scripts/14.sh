@@ -5,4 +5,4 @@ source "$(git rev-parse --show-toplevel)/frun.bash"
 # cat $1 | awk "{print \$2, \$0}" | sort -nr | cut -d ' ' -f 2
 
 # Using GNU parallel:
-frun -j "$jobs" -s -b "$BLOCK_SIZE" -k "awk '{print \$2, \$0}'" < "$1" | sort -nr | cut -d ' ' -f 2
+frun -j "$jobs" -s -b "$BLOCK_SIZE" -k bash -c "awk '{print \$2, \$0}'" < "$1" | sort -nr | cut -d ' ' -f 2
