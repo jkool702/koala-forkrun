@@ -25,9 +25,10 @@ cat "$INPUT_FILE" |
   "$SCRIPT_DIR/stem-words.js" |
   tee 3grams 2grams 1grams > /dev/null &
 
-parallel --ungroup ::: \
+printf '%s\n' \
     "cat 1grams | sort | uniq -c | sort -rn > '$output_base/1-grams.txt'" \
     "cat 2grams | tr -cs A-Za-z '\n' | tr A-Z a-z | $bigrams_aux | sort | uniq -c | sort -rn > '$output_base/2-grams.txt'" \
-    "cat 3grams | tr -cs A-Za-z '\n' | tr A-Z a-z | $trigrams_aux | sort | uniq -c | sort -rn > '$output_base/3-grams.txt'"
+    "cat 3grams | tr -cs A-Za-z '\n' | tr A-Z a-z | $trigrams_aux | sort | uniq -c | sort -rn > '$output_base/3-grams.txt'" | \
+    frun -u -i {}
 
 rm -f {1,2,3}grams

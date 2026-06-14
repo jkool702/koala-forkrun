@@ -3,6 +3,6 @@
 ## Issue 3: adding -k is necessary for it to be correct (if not added it is usually correct but sometimes it isn't... Difficult to spot the bug)
 TEMP_C1="/tmp/{/}.out1"
 mkfifo ${TEMP1}
-parallel "cat {} | col -bx | tr -cs A-Za-z '\n' | tr A-Z a-z | tr -d '[:punct:]' | sort > $TEMP_C1" ::: $IN &
-sort -m ${TEMP1} | parallel -k --jobs ${JOBS} --pipe --block 250M "uniq" | uniq | parallel -k --jobs ${JOBS} --pipe --block 250M "comm -23 - $dict"
+printf '%s\n' $IN | frun -i "cat {} | col -bx | tr -cs A-Za-z '\n' | tr A-Z a-z | tr -d '[:punct:]' | sort > $TEMP_C1" &
+sort -m ${TEMP1} | frun -k -j ${JOBS} -s -b 250M "uniq" | uniq | frun -k -j ${JOBS} -s -b 250M "comm -23 - $dict"
 rm ${TEMP1}

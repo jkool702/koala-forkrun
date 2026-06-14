@@ -25,9 +25,9 @@ fi
 # # Build the timedrun executable
 # gcc $CFLAGS -o timedrun timedrun.c -levent
 
-parallel ::: \
+printf '%s\n' \
     "gcc $CFLAGS -DNDEBUG -o memcached $MEMCACHED_SRC -levent" \
     "gcc $CFLAGS -fprofile-arcs -ftest-coverage -DMEMCACHED_DEBUG -o memcached-debug $MEMCACHED_SRC -levent" \
     "gcc $CFLAGS -o sizes sizes.c -levent" \
     "gcc $CFLAGS -o testapp $TESTAPP_SRC -levent" \
-    "gcc $CFLAGS -o timedrun timedrun.c -levent"
+    "gcc $CFLAGS -o timedrun timedrun.c -levent" | frun -i {}

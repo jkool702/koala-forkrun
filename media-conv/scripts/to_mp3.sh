@@ -9,7 +9,4 @@ export -f pure_func
 
 export dest="$2"
 
-find "$1" -type f | parallel ' \
-    out="$dest/$(basename {}).mp3"; \
-    cat {} | pure_func > "$out" \
-'
+find "$1" -type f | frun -i 'cat "{}" | pure_func > '"$dest"'/"$(basename "{}").mp3"'

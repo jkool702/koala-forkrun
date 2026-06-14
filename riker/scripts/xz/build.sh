@@ -11,7 +11,7 @@ INCLUDES='-Isrc/liblzma/api -Isrc/liblzma/common -Isrc/liblzma/check -Isrc/liblz
 # mv src/liblzma/check/crc64_tablegen.c src/liblzma/check/crc64_tablegen.c.exclude
 # mv src/liblzma/rangecoder/price_tablegen.c src/liblzma/rangecoder/price_tablegen.c.exclude
 
-parallel ::: \
+frun -i ::: \
     "mv src/liblzma/check/crc32_small.c src/liblzma/check/crc32_small.c.exclude" \
     "mv src/liblzma/check/crc64_small.c src/liblzma/check/crc64_small.c.exclude" \
     "mv src/liblzma/check/crc32_tablegen.c src/liblzma/check/crc32_tablegen.c.exclude" \
@@ -28,7 +28,7 @@ gcc -fPIC -Wl,--version-script=$PWD/src/liblzma/liblzma.map -shared -Wl,-soname,
 # mv src/liblzma/check/crc64_tablegen.c.exclude src/liblzma/check/crc64_tablegen.c
 # mv src/liblzma/rangecoder/price_tablegen.c.exclude src/liblzma/rangecoder/price_tablegen.c
 
-parallel ::: \
+frun -i ::: \
     "mv src/liblzma/check/crc32_small.c.exclude src/liblzma/check/crc32_small.c" \
     "mv src/liblzma/check/crc64_small.c.exclude src/liblzma/check/crc64_small.c" \
     "mv src/liblzma/check/crc32_tablegen.c.exclude src/liblzma/check/crc32_tablegen.c" \

@@ -4,4 +4,4 @@
 # cat $1 | sed 1d | grep 'Bell' | cut -f 2
 
 # Using GNU parallel:
-cat $1 | sed 1d | parallel --jobs "$jobs" --pipe --block "$BLOCK_SIZE" -k "grep 'Bell' | cut -f 2" < "$1"
+cat $1 | sed 1d | frun -j "$jobs" -s -b "$BLOCK_SIZE" -k "grep 'Bell' | cut -f 2"
