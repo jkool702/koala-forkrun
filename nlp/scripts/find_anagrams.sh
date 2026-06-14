@@ -16,6 +16,6 @@ pure_func() {
 export -f pure_func
 
 ls ${IN} | head -n ${ENTRIES} | xargs -I arg1 basename arg1 | \
-    parallel -j "$(nproc)" "cat ${IN}/{} | tr -c 'A-Za-z' '[\n*]' | grep -v '^\s*$' | pure_func {} > ${OUT}/{}.out"
+    frun -j "$(nproc)" -i "cat ${IN}/{} | tr -c 'A-Za-z' '[\n*]' | grep -v '^\s*$' | pure_func {} > ${OUT}/{}.out"
 
 echo 'done';

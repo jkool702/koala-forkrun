@@ -28,6 +28,6 @@ pure_func() {
 }
 export -f pure_func
 
-ls "${IN}" | head -n "${ENTRIES}" | parallel -j "$(nproc)" pure_func {} "${IN}" "${INPUT2}" "${OUT}"
+ls "${IN}" | head -n "${ENTRIES}" | frun -j "$(nproc)" -i pure_func {} "${IN}" "${INPUT2}" "${OUT}"
 
 echo "done"

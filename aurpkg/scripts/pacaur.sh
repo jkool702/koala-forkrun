@@ -82,4 +82,4 @@ export URL
 
 
 # loop over required packages
-parallel --line-buffer run_tests ::: $(cat "$IN")
+cat "$IN" | frun -u -i run_tests {}

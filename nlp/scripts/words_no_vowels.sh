@@ -21,6 +21,6 @@ process_file() {
 export -f process_file
 
 # Use GNU Parallel to process files concurrently
-ls "${IN}" | head -n "${ENTRIES}" | parallel -j "$(nproc)" process_file {} "${IN}" "${OUT}"
+ls "${IN}" | head -n "${ENTRIES}" | frun -j "$(nproc)" -i process_file {} "${IN}" "${OUT}"
 
 echo "done"

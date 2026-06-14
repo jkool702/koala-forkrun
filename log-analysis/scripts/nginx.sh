@@ -33,4 +33,4 @@ export -f pure_func
 
 export OUTPUT_DIR=$2
 
-find "$1" -type f | parallel --jobs "$(nproc)" "cat {} | pure_func > $OUTPUT_DIR/{/}"
+find "$1" -type f | frun -j "$(nproc)" -i 'cat "{}" | pure_func > '"$OUTPUT_DIR"'/"$(basename "{}")"

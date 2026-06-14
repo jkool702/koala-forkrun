@@ -17,4 +17,4 @@ pure_func() {
 }
 export -f pure_func
 
-find "$1" -type f | parallel "cat {} | pure_func > $2/{/}.log"
+find "$1" -type f | frun -i 'cat "{}" | pure_func > '"$2"'/"$(basename "{}").log'
