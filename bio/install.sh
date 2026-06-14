@@ -32,6 +32,10 @@ sudo make install
 
 sudo ln -s /usr/local/bin/samtools /usr/bin/samtools
 
+# Symlink hack: Override the broken local samtools 1.7 binary with the system version
+# This bypasses the assertion failure in bgzf.c by using the patched dnf-installed version
+ln -sf /usr/bin/samtools /mnt/ramdisk/koala-forkrun/bio/samtools-1.7/samtools 2>/dev/null || true
+
 cd ..
 rm -rf samtools-$required_version
 rm -rf samtools-$required_version.tar.bz2

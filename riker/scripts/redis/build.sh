@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Add compiler bypass flags for GCC 15 compatibility
+export CFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=incompatible-pointer-types"
+export CXXFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=incompatible-pointer-types"
+
 source "$(git rev-parse --show-toplevel)/frun.bash"
 # Regenerate the release.h file
 # GIT_SHA1=`(git show-ref --head --hash=8 2> /dev/null || echo 00000000) | head -n1`

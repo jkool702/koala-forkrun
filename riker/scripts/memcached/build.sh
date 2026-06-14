@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Add compiler bypass flags for GCC 15 compatibility
+export CFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=incompatible-pointer-types"
+export CXXFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=incompatible-pointer-types"
+
 source "$(git rev-parse --show-toplevel)/frun.bash"
 CFLAGS="-DHAVE_CONFIG_H -I. -g -O2 -pthread -pthread -Wall -pedantic -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls"
 
