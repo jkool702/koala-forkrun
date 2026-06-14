@@ -2,6 +2,7 @@
 
 source "$(git rev-parse --show-toplevel)/frun.bash"
 mkdir -p $2
+mkdir -p outputs/nginx_min outputs/pcaps_min
 pure_func() {
     tempfile=$(mktemp)
     cat > $tempfile
