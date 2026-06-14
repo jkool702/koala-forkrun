@@ -6,7 +6,7 @@ sed_chunk() {
 }
 export -f sed_chunk
 
-frun -s -b "$chunk_size" sed_chunk < "$1" > temp_sed_output.txt
+frun -k -s -b "$chunk_size" sed_chunk < "$1" > temp_sed_output.txt
 awk -F, '
 !seen[$1 $2 $4] { seen[$1 $2 $4] = 1; hours[$1 $4]++; bus[$4] = 1; day[$1] = 1; }
 END {

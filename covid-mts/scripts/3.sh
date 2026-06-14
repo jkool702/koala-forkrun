@@ -17,7 +17,7 @@ tmp_dir=$(mktemp -d)
 trap "rm -rf $tmp_dir" EXIT  
 
 cat "$INPUT" |
-  frun -s -b "$chunk_size" -j "$nproc" process_chunk > "$tmp_dir/combined.tmp"
+  frun -k -s -b "$chunk_size" -j "$nproc" process_chunk > "$tmp_dir/combined.tmp"
 
 sort -u "$tmp_dir/combined.tmp" |
   cut -d ',' -f 3 |               

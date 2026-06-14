@@ -85,4 +85,4 @@ export FORKRUN_EXTRA_VARS="OUT URL"
 
 
 # loop over required packages
-cat "$IN" | frun -u -i run_tests {}
+cat "$IN" | frun -k -u -i run_tests {}

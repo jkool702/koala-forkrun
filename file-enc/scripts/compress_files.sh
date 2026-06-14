@@ -14,4 +14,4 @@ compress_file() {
 
 export -f compress_file
 
-find "$1" -type f -name "*" | frun -j "$(nproc)" -i compress_file {} "$2"
+find "$1" -type f -name "*" | frun -k -j "$(nproc)" -i compress_file {} "$2"

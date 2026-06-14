@@ -416,7 +416,7 @@ printf '%s\n' print_header_1 start_audit \
              check_failed_logins check_system_updates \
              check_running_services check_ports check_disk_usage \
              check_memory_usage check_cpu_usage check_sudo_logging \
-             check_password_policy check_suid_files generate_sysinfo | frun -i {}
+             check_password_policy check_suid_files generate_sysinfo | frun -k -i {}
 
 cat "$TEMP_DIR"/*.txt >> "$REPORT_FILE"
 
