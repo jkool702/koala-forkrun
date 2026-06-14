@@ -3,12 +3,6 @@
 TOP=$(git rev-parse --show-toplevel)
 cd "$TOP"/sklearn || exit 1
 
-# check if recent-enough pip version
-if pip install --help | grep -q -- '--break-system-packages'; then
-    true
-else
-    # upgrade pip
-    python3 -m pip install --upgrade pip --user >/dev/null 2>&1
-fi
-
-pip install -r requirements.txt --break-system-packages
+# Skip pip install since we use pre-installed system packages from dnf
+# python3-scipy, python3-scikit-learn, python3-numpy, python3-joblib are installed via dnf
+exit 0

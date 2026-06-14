@@ -5,6 +5,7 @@ export CFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int 
 export CXXFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=incompatible-pointer-types"
 
 source "$(git rev-parse --show-toplevel)/frun.bash"
+export FORKRUN_EXTRA_VARS="PATH"
 # CFLAGS="-std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX"
 
 # gcc $CFLAGS -c `ls *.c | grep -v lua_`

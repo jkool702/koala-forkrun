@@ -1,6 +1,8 @@
 #!/bin/bash 
 
 source "$(git rev-parse --show-toplevel)/frun.bash"
+export FORKRUN_EXTRA_VARS="PATH"
+export FORKRUN_EXTRA_FUNCS="pure_func"
 IN=${IN:-$SUITE_DIR/inputs/pg}
 OUT=${1:-$SUITE_DIR/outputs/8.3_2/}
 ENTRIES=${ENTRIES:-1000}
